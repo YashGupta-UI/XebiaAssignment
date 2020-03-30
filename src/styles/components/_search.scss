@@ -1,0 +1,51 @@
+.searchPlanet {
+	width: 450;
+	margin-left: 400;
+}
+
+.planetDescription {
+	margin-left: 400;
+	color: 'red';
+	font-size: 15;
+}
+
+.searchPlanet {
+	display: flex;
+	justify-content: center;
+	font-family: cursive;
+}
+
+.searchBox {
+	width: 20%;
+	padding: 3px;
+	border: none;
+	border-radius: 7px;
+	font-size: 17px;
+	background-color: #f2f2f2;
+	margin-right: 2%;
+}
+
+.showResult {
+	font-family: cursive;
+	margin-top: 3%;
+	margin-left: 3%;
+}
+
+.result {
+	margin: auto;
+	width: 50%;
+	border: 3px solid black;
+	padding: 10px;
+	font-family: cursive;
+}
+
+.goBackButton {
+	width: 20%;
+	display: flex;
+	justify-content: center;
+	margin-left: 39%;
+	margin-top: 3%;
+	padding: 7px;
+	background: #cccccc;
+	font-family: cursive;
+}
