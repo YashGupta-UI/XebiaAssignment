@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getPlanetData } from '../../redux/actions/getPlanetData';
-import Loader from 'react-loader';
 import { PLANET_DESCRIPTION } from '../../appConstants/AppConstants';
 import PlanetData from '../../components/PlanetSearch/PlanetData';
+import { Redirect } from 'react-router-dom';
 
 class Search extends React.Component {
 	state = {
@@ -63,45 +63,54 @@ class Search extends React.Component {
 	render() {
 		const { error, items, selectedData } = this.state;
 
-		if (error) {
-			return <div>Error: {this.state.error}</div>;
-		} else if (Object.keys(selectedData).length) {
-			return <PlanetData selectedData={selectedData} handleReset={this.reset} />;
-		} else {
-			return (
-				<div>
-					<form className="searchPlanet">
-						<input
-							className="searchBox"
-							placeholder="Search Planets..."
-							ref={input => (this.search = input)}
-							onChange={this.handleInputChange}
-						/>
-						<br />
-						<span className="planetDescription">{PLANET_DESCRIPTION}</span>
-					</form>
+		const {
+			userData: { userdata = {} },
+		} = this.props;
 
-					<div className="showResult">
-						<ul>
-							{items
-								.sort((a, b) => b.population - a.population)
-								.map((item, idx) => (
-									<li key={item.name} onClick={this.handleClick.bind(this, item)}>
-										<div style={{ fontSize: 20 - idx }}>
-											{item.name} <br />
-										</div>
-									</li>
-								))}
-						</ul>
+		if (userdata) {
+			if (error) {
+				return <div>Error: {this.state.error}</div>;
+			} else if (Object.keys(selectedData).length) {
+				return <PlanetData selectedData={selectedData} handleReset={this.reset} />;
+			} else {
+				return (
+					<div>
+						<form className="searchPlanet">
+							<input
+								className="searchBox"
+								placeholder="Search Planets..."
+								ref={input => (this.search = input)}
+								onChange={this.handleInputChange}
+							/>
+							<br />
+							<span className="planetDescription">{PLANET_DESCRIPTION}</span>
+						</form>
+
+						<div className="showResult">
+							<ul>
+								{items
+									.sort((a, b) => b.population - a.population)
+									.map((item, idx) => (
+										<li key={item.name} onClick={this.handleClick.bind(this, item)}>
+											<div style={{ fontSize: 20 - idx }}>
+												{item.name} <br />
+											</div>
+										</li>
+									))}
+							</ul>
+						</div>
 					</div>
-				</div>
-			);
+				);
+			}
+		} else {
+			return <Redirect to="/" />;
 		}
 	}
 }
 
 const mapStateToProps = state => {
 	return {
+		userData: state.userDetails,
 		planetdata: state.getPlanetInfo.planetdata,
 		error: state.getPlanetInfo.error,
 	};
