@@ -37,7 +37,7 @@ export const GO_BACK = 'Go Back';
 
 //Logout Component
 
-export const LOGGED_OUT = 'Logged Out';
+export const LOGGED_OUT = 'Logged Out !!';
 export const LOGIN_IN_AGAIN = 'Login In Again';
 
 // Not Found Component

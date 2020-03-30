@@ -11,7 +11,7 @@ const Logout = props => {
 
 	return (
 		<div>
-			<div>{LOGGED_OUT}</div>
+			<h3>{LOGGED_OUT}</h3>
 			<button className="searcButton" onClick={routeLogin}>
 				{LOGIN_IN_AGAIN}
 			</button>
