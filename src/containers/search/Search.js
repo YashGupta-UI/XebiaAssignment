@@ -34,11 +34,13 @@ class Search extends React.Component {
 	};
 
 	static getDerivedStateFromProps(nextProps, prevState) {
-		const { planetdata } = nextProps;
+		const {
+			planetdata: { planetdata = {} },
+		} = nextProps;
 
 		if (planetdata && planetdata.count) {
 			return {
-				items: nextProps.planetdata.results,
+				items: planetdata.results,
 				isLoading: false,
 				error: '',
 			};
@@ -111,8 +113,8 @@ class Search extends React.Component {
 const mapStateToProps = state => {
 	return {
 		userData: state.userDetails,
-		planetdata: state.getPlanetInfo.planetdata,
-		error: state.getPlanetInfo.error,
+		planetdata: state.getPlanetInfo,
+		error: state.getPlanetInfo,
 	};
 };
 

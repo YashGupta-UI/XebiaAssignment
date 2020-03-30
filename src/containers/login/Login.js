@@ -51,18 +51,18 @@ class Login extends Component {
 	};
 
 	static getDerivedStateFromProps(nextProps, prevState) {
-		const {
-			userData: { userdata = {} },
-		} = nextProps;
+		// const {
+		// 	userData: { userdata = {} },
+		// } = nextProps;
 
-		if (userdata && userdata.count > 0) {
+		if (nextProps.userData && nextProps.userData.userdata && nextProps.userData.userdata.count > 0) {
 			return {
 				isAuth: true,
 				isLoading: false,
 				error: '',
 			};
 		}
-		if (userdata && userdata.count === 0) {
+		if (nextProps.userData && nextProps.userData.userdata && nextProps.userData.userdata.count === 0) {
 			return {
 				isLoading: false,
 				error: INVALID_CREDENTIALS,
