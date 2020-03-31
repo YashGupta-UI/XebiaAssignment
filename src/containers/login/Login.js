@@ -7,7 +7,7 @@ import Home from '../../components/home/Home';
 import Loader from 'react-loader';
 import AuthError from '../../components/authError/AuthError';
 
-class Login extends Component {
+export class Login extends Component {
 	state = {
 		username: '',
 		password: '',

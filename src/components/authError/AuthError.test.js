@@ -14,4 +14,12 @@ describe('AuthError Component', () => {
 		const tree = renderer.create(<AuthError />).toJSON();
 		expect(tree).toMatchSnapshot();
 	});
+
+	it('should render div', () => {
+		expect(wrapper.find('div').length).toBe(1);
+	});
+
+	it('should render span ', () => {
+		expect(wrapper.find('span').length).toBe(2);
+	});
 });
