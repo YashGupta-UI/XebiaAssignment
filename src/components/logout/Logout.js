@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { LOGGED_OUT, LOGIN_IN_AGAIN } from '../../appConstants/AppConstants';
 import { Redirect } from 'react-router-dom';
 
-const Logout = props => {
+export const Logout = props => {
 	function routeLogin() {
 		props.dispatch(logOutUser());
 		props.history.push('/');

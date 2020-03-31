@@ -5,7 +5,7 @@ import { PLANET_DESCRIPTION } from '../../appConstants/AppConstants';
 import PlanetData from '../../components/PlanetSearch/PlanetData';
 import { Redirect } from 'react-router-dom';
 
-class Search extends React.Component {
+export class Search extends React.Component {
 	state = {
 		value: '',
 		isLoading: false,
@@ -34,13 +34,11 @@ class Search extends React.Component {
 	};
 
 	static getDerivedStateFromProps(nextProps, prevState) {
-		const {
-			planetdata: { planetdata = {} },
-		} = nextProps;
+		const { planetdata } = nextProps;
 
-		if (planetdata && planetdata.count) {
+		if (planetdata && planetdata.planetdata && planetdata.planetdata.count) {
 			return {
-				items: planetdata.results,
+				items: planetdata.planetdata.results,
 				isLoading: false,
 				error: '',
 			};
@@ -65,11 +63,9 @@ class Search extends React.Component {
 	render() {
 		const { error, items, selectedData } = this.state;
 
-		const {
-			userData: { userdata = {} },
-		} = this.props;
+		const { userData } = this.props;
 
-		if (userdata) {
+		if (userData && userData.userdata) {
 			if (error) {
 				return <div>Error: {this.state.error}</div>;
 			} else if (Object.keys(selectedData).length) {

@@ -1,17 +1,17 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import AuthError from './AuthError';
+import Footer from './Footer';
 import renderer from 'react-test-renderer';
 
 let wrapper;
 
 beforeEach(() => {
-	wrapper = shallow(<AuthError />);
+	wrapper = shallow(<Footer />);
 });
 
-describe('AuthError Component', () => {
+describe('Footer Component', () => {
 	it('should render correctly snapshot', () => {
-		const tree = renderer.create(<AuthError />).toJSON();
+		const tree = renderer.create(<Footer />).toJSON();
 		expect(tree).toMatchSnapshot();
 	});
 });

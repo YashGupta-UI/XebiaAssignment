@@ -3,17 +3,15 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { HOME, SEARCH, LOGIN, LOGOUT } from '../../appConstants/AppConstants';
 
-class Header extends Component {
+export class Header extends Component {
 	state = {
 		isAuth: false,
 	};
 
 	static getDerivedStateFromProps(nextProps, prevState) {
-		const {
-			userData: { userdata = {} },
-		} = nextProps;
+		const { userData } = nextProps;
 
-		if (userdata && userdata.count > 0) {
+		if (userData && userData.userdata && userData.userdata.count > 0) {
 			return {
 				isAuth: true,
 			};

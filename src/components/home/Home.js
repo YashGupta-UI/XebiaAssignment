@@ -2,7 +2,7 @@ import React from 'react';
 import { HEADING, DESCIPTION, START_SEARCH } from '../../appConstants/AppConstants';
 import { withRouter } from 'react-router-dom';
 
-const Home = props => {
+export const Home = props => {
 	function routeToSearch() {
 		props.history.push('/search');
 	}
